@@ -1,7 +1,7 @@
 from pprint import pprint
 
 from ptuql import PtuQL
-from ptuql.query import QueryOperator
+from ptuql.query import Query, QueryOperator
 from ptuql.table import Column, DataType, Literals
 
 if __name__ == "__main__":
@@ -27,6 +27,7 @@ if __name__ == "__main__":
         [Literals.Auto, 2026, "Ivan L.", 19, "Quantum Safe Systems co."],
         [Literals.Auto, 2026, "Albert", 18, "Quantum Safe Systems co."],
         [Literals.Auto, 2026, "Fedor", 19, "SPO ENTERPRICE LLC"],
+        [Literals.Auto, 2026, "Nikas", 19, "SPO ENTERPRICE LLC"],
         [Literals.Auto, 2026, "Ivan L.", 19, "SPO ENTERPRICE LLC"],
         [Literals.Auto, 2026, "Albert", 19, "SPO ENTERPRICE LLC"],
     ])
@@ -45,3 +46,7 @@ if __name__ == "__main__":
     print()
     print("SeqScan:")
     pprint(get_costs(cols[1], QueryOperator.Greater, 2024))
+
+    print()
+    print("select:")
+    pprint(pql.select(Query("company", QueryOperator.Equal, "SPO ENTERPRICE LLC")))
